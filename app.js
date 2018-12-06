@@ -14,12 +14,12 @@ setupReportCron('https://gupy.gupy.io/candidates');
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-app.get('/', async (req, res) => {
+app.get('/reports', async (req, res) => {
   const reports = (await Report.find().sort({ createdAt: 'asc' })) || [];
   res.render('index', { reports })
 });
 
-app.get('/:reportId', async (req, res) => {
+app.get('/reports/:reportId', async (req, res) => {
   const report = (await Report.findOne({ _id: req.params.reportId })) || {};
   const html = ReportGenerator.generateReport(JSON.parse(report.json), 'html');
   res.send(html);
