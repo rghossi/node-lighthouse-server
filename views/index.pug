@@ -1,0 +1,11 @@
+html
+  head
+    title Node Lighthouse
+  body
+    h1 Metrics
+    #container
+      ul
+      li PS FCP SI TTI 
+      each report, index in reports
+        li
+          a(href=report._id)= report.perfScore + ' ' + report.firstContentfulPaint + ' ' + report.speedIndex + ' ' + report.timeToInteractive + ' '
